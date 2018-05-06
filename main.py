@@ -12,6 +12,7 @@ class User(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     username = db.column(db.String(255))
     password = db.Column(db.String(255))
+    name = db.column(db.String(255))
     posts = db.relationship(
         'Post',
         backref='user',
@@ -80,20 +81,7 @@ class Comment(db.Model):
 
 @app.route('/')
 def home():
-    return '<h1>Hello World!</h1>'
-
-
-# def sidebar_data():
-#     recent = Post.query.order_by(
-#         Post.publish_date.desc()
-#     ).limit(5).all()
-#     top_tags = db.session.query(
-#         Tag, func.count(tags.c.post_id).label('total')
-#     ).join(
-#         tags
-#     ).group_by(Tag).order_by('total DESC').limit(5).all()
-
-#     return recent, top_tags
+    return "hello world"
 
 
 if __name__ == '__main__':
